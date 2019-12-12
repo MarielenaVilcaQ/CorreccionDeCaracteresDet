@@ -22,7 +22,7 @@ import org.opencv.core.Point;
 import org.opencv.core.Size;
 /**
  *
- * @author Marielena
+ * @author MarielenaV
  */
 public class OptimizarImagen {
 	// Source path content images
