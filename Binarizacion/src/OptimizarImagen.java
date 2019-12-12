@@ -26,7 +26,7 @@ import org.opencv.core.Size;
  */
 public class OptimizarImagen {
 	// Source path content images
-	static String SRC_PATH = "D:/GITHUB/Binarizacion/src";
+	static String SRC_PATH = "D:\\CorreccionDeCaracteresDet\\Binarizacion\\src";
 	
 	// Load OPENCV
 	static {

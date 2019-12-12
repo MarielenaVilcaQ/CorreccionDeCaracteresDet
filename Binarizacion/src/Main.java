@@ -171,7 +171,7 @@ public class Main extends javax.swing.JFrame {
         Mat origin = imread(textField1.getText());
             
         String result = new OptimizarImagen().optimizedBinary(origin);
-        //System.out.println(result);
+        System.out.println(result);
 
         jLabel2.setText("");
         ImageIcon imageIcon = new ImageIcon(new ImageIcon(result).getImage().
