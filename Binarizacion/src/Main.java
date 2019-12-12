@@ -187,7 +187,7 @@ public class Main extends javax.swing.JFrame {
         try {
             // TODO add your handling code here;
         
-            tesseract.setDatapath("D:\\CorreccionDeCaracteresDet\\Binarizacion\\dist\\Tess4J\\tessdata");
+            tesseract.setDatapath("D:\\CorreccionDeCaracteresDet\\Binarizacion\\lib\\Tess4J\\tessdata");
             String text = tesseract.doOCR(new File(textField1.getText())); // Aqui debe ir la imagen procesada , esoty tomando la otra imagen
             jTextArea1.setText(text);
         } catch (TesseractException ex) {
