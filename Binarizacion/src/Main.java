@@ -12,6 +12,8 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import net.sourceforge.tess4j.Tesseract;
+import net.sourceforge.tess4j.TesseractException;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import static org.opencv.highgui.Highgui.imread;
@@ -171,7 +173,7 @@ public class Main extends javax.swing.JFrame {
         Mat origin = imread(textField1.getText());
             
         String result = new OptimizarImagen().optimizedBinary(origin);
-        System.out.println(result);
+        //System.out.println(result);
 
         jLabel2.setText("");
         ImageIcon imageIcon = new ImageIcon(new ImageIcon(result).getImage().
@@ -181,16 +183,16 @@ public class Main extends javax.swing.JFrame {
 
     private void button3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button3ActionPerformed
         // TODO add your handling code here:
-        /*Tesseract tesseract = new Tesseract();
+        Tesseract tesseract = new Tesseract();
         try {
             // TODO add your handling code here;
         
-            tesseract.setDatapath("D:\\2019 - II SEMESTRE\\CALIDAD DE SOFTWARE\\TEORIA\\OCR\\OCR_GRUPO3\\OCR_GRUPO3\\input1.JPG");
+            tesseract.setDatapath("D:\\CorreccionDeCaracteresDet\\Binarizacion\\dist\\Tess4J\\tessdata");
             String text = tesseract.doOCR(new File(textField1.getText())); // Aqui debe ir la imagen procesada , esoty tomando la otra imagen
             jTextArea1.setText(text);
         } catch (TesseractException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+        }  
     }//GEN-LAST:event_button3ActionPerformed
 
     /**
