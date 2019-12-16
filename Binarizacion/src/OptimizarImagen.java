@@ -1,65 +1,45 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 import static org.opencv.highgui.Highgui.imread;
 import static org.opencv.highgui.Highgui.imwrite;
-import static org.opencv.imgproc.Imgproc.COLOR_BGR2GRAY;
-import static org.opencv.imgproc.Imgproc.MORPH_RECT;
+import static org.opencv.imgproc.Imgproc.bilateralFilter;
+import static org.opencv.imgproc.Imgproc.threshold;
 import static org.opencv.imgproc.Imgproc.cvtColor;
-import static org.opencv.imgproc.Imgproc.dilate;
-import static org.opencv.imgproc.Imgproc.erode;
-import static org.opencv.imgproc.Imgproc.getStructuringElement;
-
-import java.io.File;
+import static org.opencv.imgproc.Imgproc.COLOR_BGR2GRAY;
+import static org.opencv.imgproc.Imgproc.THRESH_BINARY;
 
 import org.opencv.core.Core;
-import org.opencv.core.CvType;
 import org.opencv.core.Mat;
-import org.opencv.core.Point;
-import org.opencv.core.Size;
-/**
- *
- * @author MarielenaV
- */
+
 public class OptimizarImagen {
-	// Source path content images
-	static String SRC_PATH = "D:\\CorreccionDeCaracteresDet\\Binarizacion\\src";
-	
-	// Load OPENCV
-	static {
-		System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+	static {System.loadLibrary(Core.NATIVE_LIBRARY_NAME);}
+
+	public static String optimizarBinarizacion(String path, String img, String exts, boolean sharp) {
+		Mat imgSrc= imread(path+img+exts);
+		Mat imgFinal = optimizarBinarizacion(imgSrc, sharp);
+		String new_path = path+img+"_final"+exts;
+		imwrite(new_path, imgFinal);
+		return new_path;
 	}
 
-	String optimizedBinary(Mat inputMat) {
-		String result = "";
-		Mat gray = new Mat();
-		
-		// Convert to gray scale
-		cvtColor(inputMat, gray, COLOR_BGR2GRAY);
-		imwrite(SRC_PATH + "gray.png", gray);
-		result = SRC_PATH + "gray.png";
-
-		return result;
+	//boolean sharp: representa la agresividad de procesamiento para quitar el ruido
+	public static Mat optimizarBinarizacion(Mat imgSrc, boolean sharp) {
+		Mat image = new Mat(imgSrc.rows(),imgSrc.cols(),imgSrc.type());
+		bilateralFilter(imgSrc, image, 9, 100, 100);
+		if (sharp) threshold(image, image, 100, 255, THRESH_BINARY);
+		cvtColor(image, image, COLOR_BGR2GRAY);
+		return image;
 	}
 	
+	//main temporal, usar en la interfaz
 	public static void main(String[] args) {
-		System.out.println("Start recognize text from image");
-		long start = System.currentTimeMillis();
+		String src_path = "D:\\CorreccionDeCaracteresDet\\Binarizacion\\src\\";
+		String img_name = "imagen";
+		String img_exts = ".png";
+		
+		long time_start = System.currentTimeMillis();
+		String result = OptimizarImagen.optimizarBinarizacion(src_path,img_name,img_exts,false);
+		long time_end = System.currentTimeMillis();
 
-		Mat origin = imread(SRC_PATH + "texto_de_prueba.png");
-		
-		String result = new OptimizarImagen().optimizedBinary(origin);
-		System.out.println("PATH: " + result);
-		////////////////
-		//APLY TESSERACT
-		////////////////
-		
-		System.out.println("Time");
-		System.out.println(System.currentTimeMillis() - start);
-		System.out.println("Done");
+		System.out.println("Path: " + result);
+		System.out.println("Tiempo: " + (time_end-time_start) + "\nHecho.");
 	}
-    
 }
