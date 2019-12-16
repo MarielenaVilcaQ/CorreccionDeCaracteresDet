@@ -32,9 +32,9 @@ public class Main extends javax.swing.JFrame {
     }
 
     static {
-                    System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
-            }
-    
+        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -46,14 +46,19 @@ public class Main extends javax.swing.JFrame {
 
         textField1 = new java.awt.TextField();
         button1 = new java.awt.Button();
-        button2 = new java.awt.Button();
-        button3 = new java.awt.Button();
+        buttonProcesaraImagen = new java.awt.Button();
+        buttonConvertirImagen = new java.awt.Button();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        jLabel4 = new javax.swing.JLabel();
+        disminuirRuido = new javax.swing.JCheckBox();
+        completarCaracteres = new javax.swing.JCheckBox();
+        reducirExcesos = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         textField1.setName("ruta"); // NOI18N
         textField1.addActionListener(new java.awt.event.ActionListener() {
@@ -70,74 +75,132 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        button2.setActionCommand("Procesar imagen");
-        button2.setLabel("Procesar imagen");
-        button2.setName(""); // NOI18N
-        button2.addActionListener(new java.awt.event.ActionListener() {
+        buttonProcesaraImagen.setActionCommand("Procesar imagen");
+        buttonProcesaraImagen.setEnabled(false);
+        buttonProcesaraImagen.setLabel("Procesar imagen");
+        buttonProcesaraImagen.setName(""); // NOI18N
+        buttonProcesaraImagen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button2ActionPerformed(evt);
+                buttonProcesaraImagenActionPerformed(evt);
             }
         });
 
-        button3.setActionCommand("Convertir imagen a texto");
-        button3.setLabel("Convertir imagen a texto");
-        button3.addActionListener(new java.awt.event.ActionListener() {
+        buttonConvertirImagen.setActionCommand("Convertir imagen a texto");
+        buttonConvertirImagen.setEnabled(false);
+        buttonConvertirImagen.setLabel("Convertir imagen a texto");
+        buttonConvertirImagen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button3ActionPerformed(evt);
+                buttonConvertirImagenActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("jLabel1");
+        jLabel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel2.setText("jLabel2");
+        jLabel2.setToolTipText("");
+        jLabel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/una.png"))); // NOI18N
+        jLabel4.setText("EPIS");
+        jLabel4.setMaximumSize(new java.awt.Dimension(826, 800));
+
+        disminuirRuido.setText("Disminuir Ruido");
+        disminuirRuido.setEnabled(false);
+        disminuirRuido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                disminuirRuidoActionPerformed(evt);
+            }
+        });
+
+        completarCaracteres.setText("Completar Caracteres");
+        completarCaracteres.setEnabled(false);
+        completarCaracteres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                completarCaracteresActionPerformed(evt);
+            }
+        });
+
+        reducirExcesos.setText("Reducir Excesos");
+        reducirExcesos.setEnabled(false);
+        reducirExcesos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reducirExcesosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(textField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 107, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(buttonProcesaraImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(disminuirRuido)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE))))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(completarCaracteres)
+                                .addGap(125, 125, 125)
+                                .addComponent(reducirExcesos))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(buttonConvertirImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(65, 65, 65))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(31, 31, 31)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(21, 21, 21)
-                        .addComponent(button2, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(1, 1, 1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(58, 58, 58)))
-                .addGap(14, 14, 14)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(button3, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25))
+                        .addGap(46, 46, 46))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(231, 231, 231))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(disminuirRuido)
+                    .addComponent(completarCaracteres)
+                    .addComponent(reducirExcesos))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(buttonProcesaraImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonConvertirImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(button3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(button2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(button1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(textField1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE))
-                .addContainerGap(56, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
-        button2.getAccessibleContext().setAccessibleDescription("");
+        buttonProcesaraImagen.getAccessibleContext().setAccessibleDescription("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -148,52 +211,98 @@ public class Main extends javax.swing.JFrame {
 
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
         // TODO add your handling code here:
-        
-        // TODO add your handling code here:
+        //Cargar Imagen
         JFileChooser jf = new JFileChooser();
-        FileNameExtensionFilter imageFilter = new FileNameExtensionFilter("png", 
+        FileNameExtensionFilter imageFilter = new FileNameExtensionFilter("png",
                 ImageIO.getReaderFileSuffixes());
         jf.setFileFilter(imageFilter);
-        
+
         jf.showOpenDialog(this);
         File file = jf.getSelectedFile();
         if (file != null) {
             textField1.setText(file.getAbsolutePath());
-            
+            //Activar check box
+            disminuirRuido.setEnabled(true);
+            completarCaracteres.setEnabled(true);
+            reducirExcesos.setEnabled(true);
+
             jLabel1.setText("");
             ImageIcon imageIcon = new ImageIcon(new ImageIcon(file.
                     getAbsolutePath()).getImage().
                     getScaledInstance(250, 250, Image.SCALE_DEFAULT));
             jLabel1.setIcon(imageIcon);
-        }   
+        }
     }//GEN-LAST:event_button1ActionPerformed
 
-    private void button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2ActionPerformed
+    private void buttonProcesaraImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonProcesaraImagenActionPerformed
         // TODO add your handling code here:
-        Mat origin = imread(textField1.getText());
+        //PROCESAR IMAGEN
+
+        if (completarCaracteres.isSelected()) {
+            jLabel2.setText("Completar Caracteres");
+        }
+
+        if (disminuirRuido.isSelected()) {
+            //Poner Codigo para Disminuir Ruido
+
+            Mat origin = imread(textField1.getText());
+            result = new OptimizarImagen().optimizedBinary(origin);
             
-        String result = new OptimizarImagen().optimizedBinary(origin);
-        //System.out.println(result);
+            //System.out.println(result);
 
-        jLabel2.setText("");
-        ImageIcon imageIcon = new ImageIcon(new ImageIcon(result).getImage().
-                getScaledInstance(250, 250, Image.SCALE_DEFAULT));
-        jLabel2.setIcon(imageIcon);
-    }//GEN-LAST:event_button2ActionPerformed
+            jLabel2.setText("");
+            ImageIcon imageIcon = new ImageIcon(new ImageIcon(result).getImage().
+                    getScaledInstance(250, 250, Image.SCALE_DEFAULT));
+            jLabel2.setIcon(imageIcon);
+        }
 
-    private void button3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button3ActionPerformed
+        if (reducirExcesos.isSelected()) {
+            jLabel2.setText("Reducir Excesos");
+        }
+        
+        //Activar boton 
+        buttonConvertirImagen.setEnabled(true);
+
+
+    }//GEN-LAST:event_buttonProcesaraImagenActionPerformed
+
+    private void buttonConvertirImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonConvertirImagenActionPerformed
         // TODO add your handling code here:
+        //CONVERTIR A TEXTO
         Tesseract tesseract = new Tesseract();
         try {
             // TODO add your handling code here;
-        
+
             tesseract.setDatapath("D:\\CorreccionDeCaracteresDet\\Binarizacion\\lib\\Tess4J\\tessdata");
-            String text = tesseract.doOCR(new File(textField1.getText())); // Aqui debe ir la imagen procesada , esoty tomando la otra imagen
+            String text = tesseract.doOCR(new File(result)); // Aqui debe ir la imagen procesada , esoty tomando la otra imagen
             jTextArea1.setText(text);
         } catch (TesseractException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }  
-    }//GEN-LAST:event_button3ActionPerformed
+        }
+    }//GEN-LAST:event_buttonConvertirImagenActionPerformed
+    //Metodo para activar el boton de procesar
+    private void seleccionados(){
+        if((disminuirRuido.isSelected() || reducirExcesos.isSelected() || completarCaracteres.isSelected())){
+            buttonProcesaraImagen.setEnabled(true);
+        }else{
+            buttonProcesaraImagen.setEnabled(false);
+            buttonConvertirImagen.setEnabled(false);
+        }
+    }
+    private void disminuirRuidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disminuirRuidoActionPerformed
+        // TODO add your handling code here:
+        seleccionados();
+    }//GEN-LAST:event_disminuirRuidoActionPerformed
+
+    private void reducirExcesosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reducirExcesosActionPerformed
+        // TODO add your handling code here:
+        seleccionados();
+    }//GEN-LAST:event_reducirExcesosActionPerformed
+
+    private void completarCaracteresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_completarCaracteresActionPerformed
+        // TODO add your handling code here:
+        seleccionados();
+    }//GEN-LAST:event_completarCaracteresActionPerformed
 
     /**
      * @param args the command line arguments
@@ -224,26 +333,32 @@ public class Main extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-        
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 // Load OPENCV
-            
-                
+
                 new Main().setVisible(true);
+
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button button1;
-    private java.awt.Button button2;
-    private java.awt.Button button3;
+    private java.awt.Button buttonConvertirImagen;
+    private java.awt.Button buttonProcesaraImagen;
+    private javax.swing.JCheckBox completarCaracteres;
+    private javax.swing.JCheckBox disminuirRuido;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JCheckBox reducirExcesos;
     private java.awt.TextField textField1;
     // End of variables declaration//GEN-END:variables
+    private String result;
+
 }
