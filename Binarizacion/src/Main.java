@@ -16,8 +16,8 @@ import net.sourceforge.tess4j.Tesseract;
 import net.sourceforge.tess4j.TesseractException;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
-import static org.opencv.highgui.Highgui.imread;
-
+import static org.opencv.imgcodecs.Imgcodecs.imread;
+import static org.opencv.imgcodecs.Imgcodecs.imwrite;
 /**
  *
  * @author Marielena
@@ -255,7 +255,17 @@ public class Main extends javax.swing.JFrame {
         //PROCESAR IMAGEN
 
         if (completarCaracteres.isSelected()) {
-            jLabel2.setText("Completar Caracteres");
+            //jLabel2.setText("Completar Caracteres");
+            String origin = textField1.getText();
+            result = new CompletarCaracteres().completeCaracter(origin);
+            
+            //System.out.println(result);
+
+            jLabel2.setText("");
+            ImageIcon imageIcon = new ImageIcon(new ImageIcon(result).getImage().
+                    getScaledInstance(250, 250, Image.SCALE_DEFAULT));
+            jLabel2.setIcon(imageIcon);
+            
         }
 
         if (disminuirRuido.isSelected()) {
