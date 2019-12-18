@@ -69,12 +69,18 @@
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="jScrollPane1" min="-2" pref="247" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="button1" pref="153" max="32767" attributes="0"/>
+                          <Component id="buttonResetear1" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="button1" min="-2" pref="153" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="buttonInfo" min="-2" pref="69" max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" pref="247" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -104,11 +110,16 @@
                   <Component id="completarCaracteres" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jrbAgresivo" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="buttonProcesaraImagen" min="-2" max="-2" attributes="0"/>
-                  <Component id="buttonConvertirImagen" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="jrbAgresivo" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="buttonProcesaraImagen" min="-2" max="-2" attributes="0"/>
+                          <Component id="buttonConvertirImagen" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Component id="buttonResetear1" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -116,7 +127,9 @@
                   <Component id="jLabel1" max="32767" attributes="0"/>
                   <Component id="jScrollPane1" pref="250" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="41" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="buttonInfo" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -156,6 +169,9 @@
     <Component class="java.awt.Button" name="buttonConvertirImagen">
       <Properties>
         <Property name="actionCommand" type="java.lang.String" value="Convertir imagen a texto"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Cursor Por defecto"/>
+        </Property>
         <Property name="enabled" type="boolean" value="false"/>
         <Property name="label" type="java.lang.String" value="Convertir imagen a texto"/>
       </Properties>
@@ -252,6 +268,30 @@
         <Property name="text" type="java.lang.String" value="Normal"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+    </Component>
+    <Component class="java.awt.Button" name="buttonInfo">
+      <Properties>
+        <Property name="actionCommand" type="java.lang.String" value="Convertir imagen a texto"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Cursor Por defecto"/>
+        </Property>
+        <Property name="label" type="java.lang.String" value="Informaci&#xf3;n"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonInfoActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="java.awt.Button" name="buttonResetear1">
+      <Properties>
+        <Property name="actionCommand" type="java.lang.String" value="Convertir imagen a texto"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Cursor Por defecto"/>
+        </Property>
+        <Property name="label" type="java.lang.String" value="Resetear"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonResetear1ActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

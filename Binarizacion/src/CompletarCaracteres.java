@@ -1,3 +1,4 @@
+
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Image;
@@ -35,6 +36,16 @@ public class CompletarCaracteres {
         
         imagePath = imagePath + "_final.png";
 
+        imwrite(imagePath, controlar());
+        return imagePath;
+    }
+    
+    //sin crear imagenes Repetidas
+    public String completeCaracterSinRep(String imagePath){
+        matImgSrc = Imgcodecs.imread(imagePath);
+        
+        Image img = HighGui.toBufferedImage(matImgSrc);
+        
         imwrite(imagePath, controlar());
         return imagePath;
     }

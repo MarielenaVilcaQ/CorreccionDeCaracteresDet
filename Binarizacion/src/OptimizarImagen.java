@@ -19,6 +19,14 @@ public class OptimizarImagen {
 		imwrite(new_path, imgFinal);
 		return new_path;
 	}
+        
+        //Sin crear repetidos
+        public static String optimizarBinarizacionSinRep(String path, boolean sharp) {
+		Mat imgSrc= imread(path);
+		Mat imgFinal = optimizarBinarizacion(imgSrc, sharp);
+		imwrite(path, imgFinal);
+		return path;
+	}
 
 	//boolean sharp: representa la agresividad de procesamiento para quitar el ruido
 	public static Mat optimizarBinarizacion(Mat imgSrc, boolean sharp) {

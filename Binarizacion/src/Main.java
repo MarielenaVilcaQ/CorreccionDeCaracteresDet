@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import net.sourceforge.tess4j.Tesseract;
 import net.sourceforge.tess4j.TesseractException;
@@ -18,6 +19,7 @@ import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import static org.opencv.imgcodecs.Imgcodecs.imread;
 import static org.opencv.imgcodecs.Imgcodecs.imwrite;
+
 /**
  *
  * @author Marielena
@@ -59,6 +61,8 @@ public class Main extends javax.swing.JFrame {
         reducirExcesos = new javax.swing.JCheckBox();
         jrbAgresivo = new javax.swing.JRadioButton();
         jrbNormal = new javax.swing.JRadioButton();
+        buttonInfo = new java.awt.Button();
+        buttonResetear1 = new java.awt.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -89,6 +93,7 @@ public class Main extends javax.swing.JFrame {
         });
 
         buttonConvertirImagen.setActionCommand("Convertir imagen a texto");
+        buttonConvertirImagen.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         buttonConvertirImagen.setEnabled(false);
         buttonConvertirImagen.setLabel("Convertir imagen a texto");
         buttonConvertirImagen.addActionListener(new java.awt.event.ActionListener() {
@@ -142,6 +147,24 @@ public class Main extends javax.swing.JFrame {
         jrbNormal.setText("Normal");
         jrbNormal.setEnabled(false);
 
+        buttonInfo.setActionCommand("Convertir imagen a texto");
+        buttonInfo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        buttonInfo.setLabel("Información");
+        buttonInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonInfoActionPerformed(evt);
+            }
+        });
+
+        buttonResetear1.setActionCommand("Convertir imagen a texto");
+        buttonResetear1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        buttonResetear1.setLabel("Resetear");
+        buttonResetear1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonResetear1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -177,11 +200,15 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(button1, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                            .addComponent(buttonResetear1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(77, 77, 77))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(77, 77, 77))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(buttonInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(38, 38, 38))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -203,17 +230,22 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(jrbNormal))
                     .addComponent(completarCaracteres, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jrbAgresivo)
-                .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(buttonProcesaraImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonConvertirImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jrbAgresivo)
+                        .addGap(11, 11, 11)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(buttonProcesaraImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buttonConvertirImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(buttonResetear1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(buttonInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         buttonProcesaraImagen.getAccessibleContext().setAccessibleDescription("");
@@ -247,6 +279,8 @@ public class Main extends javax.swing.JFrame {
                     getAbsolutePath()).getImage().
                     getScaledInstance(250, 250, Image.SCALE_DEFAULT));
             jLabel1.setIcon(imageIcon);
+            origin = textField1.getText();
+            listoProcesar = false;
         }
     }//GEN-LAST:event_button1ActionPerformed
 
@@ -254,50 +288,68 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         //PROCESAR IMAGEN
 
+        //Codigo para completar Caracteres
         if (completarCaracteres.isSelected()) {
-            //jLabel2.setText("Completar Caracteres");
-            String origin = textField1.getText();
-            result = new CompletarCaracteres().completeCaracter(origin);
-            
-            //System.out.println(result);
 
+            if (listoProcesar == false) {
+                result = new CompletarCaracteres().completeCaracter(origin);
+                listoProcesar = true;
+            } else {
+                result = new CompletarCaracteres().completeCaracterSinRep(result);
+            }
+
+            //System.out.println(result);
             jLabel2.setText("");
             ImageIcon imageIcon = new ImageIcon(new ImageIcon(result).getImage().
                     getScaledInstance(250, 250, Image.SCALE_DEFAULT));
             jLabel2.setIcon(imageIcon);
-            
+
         }
 
+        //Codigo para disminuir Ruido en la imagen
         if (disminuirRuido.isSelected()) {
-            
+
             //Codigo para ver si la disminucion de ruido es agresivo.
             boolean ruido_b = false;
-            if(jrbAgresivo.isSelected()){
+            if (jrbAgresivo.isSelected()) {
                 ruido_b = true;
             }
-            if(jrbNormal.isSelected()){
+            if (jrbNormal.isSelected()) {
                 ruido_b = false;
             }
-            
-            //Poner Codigo para Disminuir Ruido
-            
-            String origin = textField1.getText();
-            result = new OptimizarImagen().optimizarBinarizacion(origin, ruido_b);
-            
-            //System.out.println(result);
 
+            //Poner Codigo para Disminuir Ruido
+            if (listoProcesar == false) {
+                result = new OptimizarImagen().optimizarBinarizacion(origin, ruido_b);
+                listoProcesar = true;
+            } else {
+                result = new OptimizarImagen().optimizarBinarizacionSinRep(result, ruido_b);
+            }
+
+            //System.out.println(result);
             jLabel2.setText("");
             ImageIcon imageIcon = new ImageIcon(new ImageIcon(result).getImage().
                     getScaledInstance(250, 250, Image.SCALE_DEFAULT));
             jLabel2.setIcon(imageIcon);
+
         }
 
         if (reducirExcesos.isSelected()) {
             jLabel2.setText("Reducir Excesos");
+            if (listoProcesar == false) {
+                //CODIGO para reducir excesos
+                listoProcesar = true;
+            } else {
+                //Codigo para reducir excesos
+            }
         }
-        
+
         //Activar boton 
-        buttonConvertirImagen.setEnabled(true);
+        if (listoProcesar) {
+            buttonConvertirImagen.setEnabled(true);
+        } else {
+            buttonConvertirImagen.setEnabled(false);
+        }
 
 
     }//GEN-LAST:event_buttonProcesaraImagenActionPerformed
@@ -310,17 +362,17 @@ public class Main extends javax.swing.JFrame {
             // TODO add your handling code here;
 
             tesseract.setDatapath("D:\\CorreccionDeCaracteresDet\\Binarizacion\\lib\\Tess4J\\tessdata");
-            String text = tesseract.doOCR(new File(result)); // Aqui debe ir la imagen procesada , esoty tomando la otra imagen
+            String text = tesseract.doOCR(new File(result)); // Aqui debe ir la imagen procesada 
             jTextArea1.setText(text);
         } catch (TesseractException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_buttonConvertirImagenActionPerformed
     //Metodo para activar el boton de procesar
-    private void seleccionados(){
-        if((disminuirRuido.isSelected() || reducirExcesos.isSelected() || completarCaracteres.isSelected())){
+    private void seleccionados() {
+        if ((disminuirRuido.isSelected() || reducirExcesos.isSelected() || completarCaracteres.isSelected())) {
             buttonProcesaraImagen.setEnabled(true);
-        }else{
+        } else {
             buttonProcesaraImagen.setEnabled(false);
             buttonConvertirImagen.setEnabled(false);
         }
@@ -328,10 +380,11 @@ public class Main extends javax.swing.JFrame {
     private void disminuirRuidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disminuirRuidoActionPerformed
         // TODO add your handling code here:
         seleccionados();
-        if(disminuirRuido.isSelected()){
+        if (disminuirRuido.isSelected()) {
             jrbAgresivo.setEnabled(true);
             jrbNormal.setEnabled(true);
-        }else{
+            jrbNormal.setSelected(true);
+        } else {
             jrbAgresivo.setEnabled(false);
             jrbNormal.setEnabled(false);
         }
@@ -346,6 +399,18 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         seleccionados();
     }//GEN-LAST:event_completarCaracteresActionPerformed
+
+    private void buttonInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonInfoActionPerformed
+        // TODO add your handling code here:
+
+        JOptionPane.showMessageDialog(null, "Aplicación Desarrollada por los estudiantes de la EPIS:\n\t- Huayhua Paco Eleo Romario\n\t- Laura Barrios "
+                + "Erick Andy\n\t- Perez Lima Marisol\n\t- Vilca Quispe Marielena\n\t- Zea Quispe Gerald", "\t\tSobre Nosotros", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_buttonInfoActionPerformed
+
+    private void buttonResetear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonResetear1ActionPerformed
+        // TODO add your handling code here:
+        listoProcesar = false;
+    }//GEN-LAST:event_buttonResetear1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -391,7 +456,9 @@ public class Main extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button button1;
     private java.awt.Button buttonConvertirImagen;
+    private java.awt.Button buttonInfo;
     private java.awt.Button buttonProcesaraImagen;
+    private java.awt.Button buttonResetear1;
     private javax.swing.JCheckBox completarCaracteres;
     private javax.swing.JCheckBox disminuirRuido;
     private javax.swing.ButtonGroup grupoRuido;
@@ -405,6 +472,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JCheckBox reducirExcesos;
     private java.awt.TextField textField1;
     // End of variables declaration//GEN-END:variables
-    private String result;
+    private String result; //Imagen procesada
+    private String origin; //Imagen Inicial
+    private boolean listoProcesar = false;
 
 }
