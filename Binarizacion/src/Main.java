@@ -245,8 +245,8 @@ public class Main extends javax.swing.JFrame {
         if (disminuirRuido.isSelected()) {
             //Poner Codigo para Disminuir Ruido
 
-            Mat origin = imread(textField1.getText());
-            result = new OptimizarImagen().optimizedBinary(origin);
+            String origin = textField1.getText();
+            result = new OptimizarImagen().optimizarBinarizacion(origin, false);
             
             //System.out.println(result);
 

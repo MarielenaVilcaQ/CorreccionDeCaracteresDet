@@ -12,10 +12,10 @@ import org.opencv.core.Mat;
 public class OptimizarImagen {
 	static {System.loadLibrary(Core.NATIVE_LIBRARY_NAME);}
 
-	public static String optimizarBinarizacion(String path, String img, String exts, boolean sharp) {
-		Mat imgSrc= imread(path+img+exts);
+	public static String optimizarBinarizacion(String path, boolean sharp) {
+		Mat imgSrc= imread(path);
 		Mat imgFinal = optimizarBinarizacion(imgSrc, sharp);
-		String new_path = path+img+"_final"+exts;
+		String new_path = path+"_final.png";
 		imwrite(new_path, imgFinal);
 		return new_path;
 	}
@@ -36,7 +36,7 @@ public class OptimizarImagen {
 		String img_exts = ".png";
 		
 		long time_start = System.currentTimeMillis();
-		String result = OptimizarImagen.optimizarBinarizacion(src_path,img_name,img_exts,false);
+		String result = OptimizarImagen.optimizarBinarizacion(src_path,false);
 		long time_end = System.currentTimeMillis();
 
 		System.out.println("Path: " + result);
