@@ -44,6 +44,7 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        grupoRuido = new javax.swing.ButtonGroup();
         textField1 = new java.awt.TextField();
         button1 = new java.awt.Button();
         buttonProcesaraImagen = new java.awt.Button();
@@ -56,6 +57,8 @@ public class Main extends javax.swing.JFrame {
         disminuirRuido = new javax.swing.JCheckBox();
         completarCaracteres = new javax.swing.JCheckBox();
         reducirExcesos = new javax.swing.JCheckBox();
+        jrbAgresivo = new javax.swing.JRadioButton();
+        jrbNormal = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -131,6 +134,14 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        grupoRuido.add(jrbAgresivo);
+        jrbAgresivo.setText("Agresivo");
+        jrbAgresivo.setEnabled(false);
+
+        grupoRuido.add(jrbNormal);
+        jrbNormal.setText("Normal");
+        jrbNormal.setEnabled(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -142,38 +153,39 @@ public class Main extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 107, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(buttonProcesaraImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(disminuirRuido)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE))))
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGap(89, 89, 89)
+                                .addComponent(buttonProcesaraImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(completarCaracteres)
-                                .addGap(125, 125, 125)
-                                .addComponent(reducirExcesos))
+                                .addGap(46, 46, 46)
+                                .addComponent(disminuirRuido)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jrbAgresivo)
+                                    .addComponent(jrbNormal)))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(completarCaracteres)
+                                    .addGap(53, 53, 53)
+                                    .addComponent(reducirExcesos))
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(buttonConvertirImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(65, 65, 65))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(31, 31, 31)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGap(78, 78, 78)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(46, 46, 46))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24))))
+                        .addGap(38, 38, 38))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(77, 77, 77))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(231, 231, 231))
+                .addGap(216, 216, 216))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,20 +196,24 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(disminuirRuido)
-                    .addComponent(completarCaracteres)
-                    .addComponent(reducirExcesos))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(disminuirRuido)
+                        .addComponent(reducirExcesos)
+                        .addComponent(jrbNormal))
+                    .addComponent(completarCaracteres, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jrbAgresivo)
+                .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(buttonProcesaraImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonConvertirImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE))
-                .addContainerGap(28, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         buttonProcesaraImagen.getAccessibleContext().setAccessibleDescription("");
@@ -243,10 +259,20 @@ public class Main extends javax.swing.JFrame {
         }
 
         if (disminuirRuido.isSelected()) {
+            
+            //Codigo para ver si la disminucion de ruido es agresivo.
+            boolean ruido_b = false;
+            if(jrbAgresivo.isSelected()){
+                ruido_b = true;
+            }
+            if(jrbNormal.isSelected()){
+                ruido_b = false;
+            }
+            
             //Poner Codigo para Disminuir Ruido
-
+            
             String origin = textField1.getText();
-            result = new OptimizarImagen().optimizarBinarizacion(origin, false);
+            result = new OptimizarImagen().optimizarBinarizacion(origin, ruido_b);
             
             //System.out.println(result);
 
@@ -292,6 +318,13 @@ public class Main extends javax.swing.JFrame {
     private void disminuirRuidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disminuirRuidoActionPerformed
         // TODO add your handling code here:
         seleccionados();
+        if(disminuirRuido.isSelected()){
+            jrbAgresivo.setEnabled(true);
+            jrbNormal.setEnabled(true);
+        }else{
+            jrbAgresivo.setEnabled(false);
+            jrbNormal.setEnabled(false);
+        }
     }//GEN-LAST:event_disminuirRuidoActionPerformed
 
     private void reducirExcesosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reducirExcesosActionPerformed
@@ -351,11 +384,14 @@ public class Main extends javax.swing.JFrame {
     private java.awt.Button buttonProcesaraImagen;
     private javax.swing.JCheckBox completarCaracteres;
     private javax.swing.JCheckBox disminuirRuido;
+    private javax.swing.ButtonGroup grupoRuido;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JRadioButton jrbAgresivo;
+    private javax.swing.JRadioButton jrbNormal;
     private javax.swing.JCheckBox reducirExcesos;
     private java.awt.TextField textField1;
     // End of variables declaration//GEN-END:variables
