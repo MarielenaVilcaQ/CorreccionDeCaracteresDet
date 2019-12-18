@@ -1,5 +1,5 @@
-import static org.opencv.highgui.Highgui.imread;
-import static org.opencv.highgui.Highgui.imwrite;
+import static org.opencv.imgcodecs.Imgcodecs.imread;
+import static org.opencv.imgcodecs.Imgcodecs.imwrite;
 import static org.opencv.imgproc.Imgproc.bilateralFilter;
 import static org.opencv.imgproc.Imgproc.threshold;
 import static org.opencv.imgproc.Imgproc.cvtColor;
