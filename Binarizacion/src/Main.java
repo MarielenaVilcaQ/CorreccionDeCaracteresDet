@@ -299,58 +299,63 @@ public class Main extends javax.swing.JFrame {
             }
 
             //System.out.println(result);
-            jLabel2.setText("");
+            /*jLabel2.setText("");
             ImageIcon imageIcon = new ImageIcon(new ImageIcon(result).getImage().
                     getScaledInstance(250, 250, Image.SCALE_DEFAULT));
             jLabel2.setIcon(imageIcon);
-
+*/
         }
 
         //Codigo para disminuir Ruido en la imagen
         if (disminuirRuido.isSelected()) {
 
             //Codigo para ver si la disminucion de ruido es agresivo.
-            boolean ruido_b = false;
+            /*boolean ruido_b = false;
             if (jrbAgresivo.isSelected()) {
                 ruido_b = true;
             }
             if (jrbNormal.isSelected()) {
                 ruido_b = false;
-            }
+            }*/
 
             //Poner Codigo para Disminuir Ruido
             if (listoProcesar == false) {
-                result = new OptimizarImagen().optimizarBinarizacion(origin, ruido_b);
+                result = new OptimizarImagen().optimizarBinarizacion(origin, false);
                 listoProcesar = true;
             } else {
-                result = new OptimizarImagen().optimizarBinarizacionSinRep(result, ruido_b);
+                result = new OptimizarImagen().optimizarBinarizacionSinRep(result, false);
             }
 
             //System.out.println(result);
-            jLabel2.setText("");
+            /*jLabel2.setText("");
             ImageIcon imageIcon = new ImageIcon(new ImageIcon(result).getImage().
                     getScaledInstance(250, 250, Image.SCALE_DEFAULT));
             jLabel2.setIcon(imageIcon);
-
+*/
         }
 
         if (reducirExcesos.isSelected()) {
             jLabel2.setText("Reducir Excesos");
             if (listoProcesar == false) {
-                //CODIGO para reducir excesos
+                result = new OptimizarImagen().optimizarBinarizacion(origin, true);
                 listoProcesar = true;
             } else {
-                //Codigo para reducir excesos
+                result = new OptimizarImagen().optimizarBinarizacionSinRep(result, true);
             }
         }
-
+        
+        jLabel2.setText("");
+            ImageIcon imageIcon = new ImageIcon(new ImageIcon(result).getImage().
+                    getScaledInstance(250, 250, Image.SCALE_DEFAULT));
+            jLabel2.setIcon(imageIcon);        
+        
         //Activar boton 
         if (listoProcesar) {
             buttonConvertirImagen.setEnabled(true);
         } else {
             buttonConvertirImagen.setEnabled(false);
         }
-
+        
 
     }//GEN-LAST:event_buttonProcesaraImagenActionPerformed
 
@@ -390,11 +395,6 @@ public class Main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_disminuirRuidoActionPerformed
 
-    private void reducirExcesosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reducirExcesosActionPerformed
-        // TODO add your handling code here:
-        seleccionados();
-    }//GEN-LAST:event_reducirExcesosActionPerformed
-
     private void completarCaracteresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_completarCaracteresActionPerformed
         // TODO add your handling code here:
         seleccionados();
@@ -411,6 +411,11 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         listoProcesar = false;
     }//GEN-LAST:event_buttonResetear1ActionPerformed
+
+    private void reducirExcesosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reducirExcesosActionPerformed
+        // TODO add your handling code here:
+        seleccionados();
+    }//GEN-LAST:event_reducirExcesosActionPerformed
 
     /**
      * @param args the command line arguments
