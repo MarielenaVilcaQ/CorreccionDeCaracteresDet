@@ -297,26 +297,10 @@ public class Main extends javax.swing.JFrame {
             } else {
                 result = new CompletarCaracteres().completeCaracterSinRep(result);
             }
-
-            //System.out.println(result);
-            /*jLabel2.setText("");
-            ImageIcon imageIcon = new ImageIcon(new ImageIcon(result).getImage().
-                    getScaledInstance(250, 250, Image.SCALE_DEFAULT));
-            jLabel2.setIcon(imageIcon);
-*/
         }
 
         //Codigo para disminuir Ruido en la imagen
         if (disminuirRuido.isSelected()) {
-
-            //Codigo para ver si la disminucion de ruido es agresivo.
-            /*boolean ruido_b = false;
-            if (jrbAgresivo.isSelected()) {
-                ruido_b = true;
-            }
-            if (jrbNormal.isSelected()) {
-                ruido_b = false;
-            }*/
 
             //Poner Codigo para Disminuir Ruido
             if (listoProcesar == false) {
@@ -325,13 +309,6 @@ public class Main extends javax.swing.JFrame {
             } else {
                 result = new OptimizarImagen().optimizarBinarizacionSinRep(result, false);
             }
-
-            //System.out.println(result);
-            /*jLabel2.setText("");
-            ImageIcon imageIcon = new ImageIcon(new ImageIcon(result).getImage().
-                    getScaledInstance(250, 250, Image.SCALE_DEFAULT));
-            jLabel2.setIcon(imageIcon);
-*/
         }
 
         if (reducirExcesos.isSelected()) {
