@@ -59,8 +59,6 @@ public class Main extends javax.swing.JFrame {
         disminuirRuido = new javax.swing.JCheckBox();
         completarCaracteres = new javax.swing.JCheckBox();
         reducirExcesos = new javax.swing.JCheckBox();
-        jrbAgresivo = new javax.swing.JRadioButton();
-        jrbNormal = new javax.swing.JRadioButton();
         buttonInfo = new java.awt.Button();
         buttonResetear1 = new java.awt.Button();
 
@@ -139,14 +137,6 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        grupoRuido.add(jrbAgresivo);
-        jrbAgresivo.setText("Agresivo");
-        jrbAgresivo.setEnabled(false);
-
-        grupoRuido.add(jrbNormal);
-        jrbNormal.setText("Normal");
-        jrbNormal.setEnabled(false);
-
         buttonInfo.setActionCommand("Convertir imagen a texto");
         buttonInfo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         buttonInfo.setLabel("Información");
@@ -180,11 +170,7 @@ public class Main extends javax.swing.JFrame {
                                 .addComponent(buttonProcesaraImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(46, 46, 46)
-                                .addComponent(disminuirRuido)
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jrbAgresivo)
-                                    .addComponent(jrbNormal)))
+                                .addComponent(disminuirRuido))
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,17 +212,13 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(disminuirRuido)
-                        .addComponent(reducirExcesos)
-                        .addComponent(jrbNormal))
+                        .addComponent(reducirExcesos))
                     .addComponent(completarCaracteres, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jrbAgresivo)
-                        .addGap(11, 11, 11)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(buttonProcesaraImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(buttonConvertirImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(buttonProcesaraImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(buttonConvertirImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(buttonResetear1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -297,6 +279,7 @@ public class Main extends javax.swing.JFrame {
             } else {
                 result = new CompletarCaracteres().completeCaracterSinRep(result);
             }
+
         }
 
         //Codigo para disminuir Ruido en la imagen
@@ -309,14 +292,17 @@ public class Main extends javax.swing.JFrame {
             } else {
                 result = new OptimizarImagen().optimizarBinarizacionSinRep(result, false);
             }
+
         }
 
         if (reducirExcesos.isSelected()) {
             jLabel2.setText("Reducir Excesos");
             if (listoProcesar == false) {
+                //CODIGO para reducir excesos
                 result = new OptimizarImagen().optimizarBinarizacion(origin, true);
                 listoProcesar = true;
             } else {
+                //Codigo para reducir excesos
                 result = new OptimizarImagen().optimizarBinarizacionSinRep(result, true);
             }
         }
@@ -324,15 +310,15 @@ public class Main extends javax.swing.JFrame {
         jLabel2.setText("");
             ImageIcon imageIcon = new ImageIcon(new ImageIcon(result).getImage().
                     getScaledInstance(250, 250, Image.SCALE_DEFAULT));
-            jLabel2.setIcon(imageIcon);        
-        
+            jLabel2.setIcon(imageIcon);
+
         //Activar boton 
         if (listoProcesar) {
             buttonConvertirImagen.setEnabled(true);
         } else {
             buttonConvertirImagen.setEnabled(false);
         }
-        
+
 
     }//GEN-LAST:event_buttonProcesaraImagenActionPerformed
 
@@ -362,15 +348,13 @@ public class Main extends javax.swing.JFrame {
     private void disminuirRuidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disminuirRuidoActionPerformed
         // TODO add your handling code here:
         seleccionados();
-        if (disminuirRuido.isSelected()) {
-            jrbAgresivo.setEnabled(true);
-            jrbNormal.setEnabled(true);
-            jrbNormal.setSelected(true);
-        } else {
-            jrbAgresivo.setEnabled(false);
-            jrbNormal.setEnabled(false);
-        }
+        
     }//GEN-LAST:event_disminuirRuidoActionPerformed
+
+    private void reducirExcesosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reducirExcesosActionPerformed
+        // TODO add your handling code here:
+        seleccionados();
+    }//GEN-LAST:event_reducirExcesosActionPerformed
 
     private void completarCaracteresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_completarCaracteresActionPerformed
         // TODO add your handling code here:
@@ -388,11 +372,6 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         listoProcesar = false;
     }//GEN-LAST:event_buttonResetear1ActionPerformed
-
-    private void reducirExcesosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reducirExcesosActionPerformed
-        // TODO add your handling code here:
-        seleccionados();
-    }//GEN-LAST:event_reducirExcesosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -449,8 +428,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JRadioButton jrbAgresivo;
-    private javax.swing.JRadioButton jrbNormal;
     private javax.swing.JCheckBox reducirExcesos;
     private java.awt.TextField textField1;
     // End of variables declaration//GEN-END:variables
