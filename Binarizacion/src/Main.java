@@ -370,7 +370,10 @@ public class Main extends javax.swing.JFrame {
 
     private void buttonResetear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonResetear1ActionPerformed
         // TODO add your handling code here:
+        //Borra la imagen procesada y desactiva el boton de convertirImagen
         listoProcesar = false;
+        buttonConvertirImagen.setEnabled(listoProcesar);
+        jLabel2.setIcon(null);
     }//GEN-LAST:event_buttonResetear1ActionPerformed
 
     /**
